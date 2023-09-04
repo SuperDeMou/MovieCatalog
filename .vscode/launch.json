@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "dev.SuperDeMou.movies.mongodb.Main",
+            "projectName": "movies"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MoviesApplication<movies>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.SuperDeMou.movies.MoviesApplication",
+            "projectName": "movies",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
