@@ -8,13 +8,13 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-public class PasswordEncryptor {
-    private static final String CONFIG_FILE = "configuration.properties";
+public class Decryptor {
+    private static final String CONFIG_FILE = "application.properties";
     private static final Properties properties = new Properties();
 
     static {
         try {
-            InputStream inputStream = PasswordEncryptor.class.getClassLoader().getResourceAsStream(CONFIG_FILE);
+            InputStream inputStream = Decryptor.class.getClassLoader().getResourceAsStream(CONFIG_FILE);
             properties.load(inputStream);
 
         } catch (Exception e) {
@@ -26,27 +26,19 @@ public class PasswordEncryptor {
         return properties.getProperty("encryption.key");
     }
 
-    private static String getPassword() {
+    private static String getEncryptedPassword() {
         return properties.getProperty("password");
     }
 
-    private static String getCluster() {
+    private static String getEncryptedCluster() {
         return properties.getProperty("cluster");
     }
 
-    private static String encrypt(String password) throws Exception {
-        SecretKey key = new SecretKeySpec(getEncryptionKey().getBytes(), "AES");
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encryptedBytes = cipher.doFinal(password.getBytes());
-        return Base64.getEncoder().encodeToString(encryptedBytes);
-    }
-
-    private static String decrypt(String encryptedPassword) throws Exception {
+    private static String decrypt(String encryptedValue) throws Exception {
         SecretKey key = new SecretKeySpec(getEncryptionKey().getBytes(), "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedPassword));
+        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedValue));
         return new String(decryptedBytes);
     }
 
@@ -54,9 +46,7 @@ public class PasswordEncryptor {
         String decryptedCluster = "";
         String encryptedCluster = "";
         try {
-            String cluster = getCluster();
-
-            encryptedCluster = encrypt(cluster);
+            encryptedCluster = getEncryptedCluster();
             decryptedCluster = decrypt(encryptedCluster);
 
         } catch (Exception e) {
@@ -72,9 +62,7 @@ public class PasswordEncryptor {
         String decryptedPassword = "";
         String encryptedPassword = "";
         try {
-            String password = getPassword();
-
-            encryptedPassword = encrypt(password);
+            encryptedPassword = getEncryptedPassword();
             decryptedPassword = decrypt(encryptedPassword);
 
         } catch (Exception e) {
@@ -86,5 +74,6 @@ public class PasswordEncryptor {
         return decryptedPassword;
     }
 }
-//"C:\Program Files\FireDaemon OpenSSL 3\bin\openssl.exe" pkcs12 -export -out keystore.pkcs12 -in "E:\Programation\All Java\Other projects\MovieCatalog\backend\src\main\java\dev\SuperDeMou\movies\mongodb\X509-cert-1969471392627108642.pem"
+
+//"C:\Program Files\FireDaemon OpenSSL 3\bin\openssl.exe" pkcs12 -export -out keystore.pkcs12 -in "E:\Programation\All Java\Other projects\MovieCatalog\backend\src\main\java\dev\SuperDeMou\movies\mongodb\passwordManagment\X509-cert-1969471392627108642.pem"
 //"keytool -importkeystore -srckeystore keystore.pkcs12 -srcstoretype PKCS12 -destkeystore keystore.jks -deststoretype JKS"

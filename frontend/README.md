@@ -12,6 +12,7 @@
 - [Node Modules Installation Guide](#node-modules-installation-guide)
 - [Ngrok Installation and Configuration Guide](#ngrok-installation-and-configuration-guide)
 - [Future Enhancements](#future-enhancements-⚠️)
+- [Application overview](#application-overview)
 
 # Steps for Setting up the Environment
 
@@ -135,6 +136,9 @@ If you want to create a new link, you have 2 options:
 
 6. Add a comments section to movie pages using "disqus.com".
 
+## Application Overview
+![Untitled ‑ Made with FlexClip (1)](https://github.com/SuperDeMou/MovieCatalog/assets/136927780/4df0ddaf-be0e-4cad-add7-9d65abc290a1)
+
 <br>
 <br>
 <br>
@@ -168,6 +172,7 @@ If you want to create a new link, you have 2 options:
 - [Guia de Instalação dos Node Modules](#guia-de-instalação-dos-node-modules)
 - [Guia de Instalação e configuração do Ngrok](#guia-de-instalação-e-configuração-do-ngrok)
 - [Recursos Futuros](#recursos-futuros-⚠️)
+- [Visão Geral da Aplicação](#visão-geral-da-aplicação)
 
 # Passos para Configuração do Ambiente
 
@@ -290,3 +295,7 @@ Caso você queira criar um novo link, você tem 2 opções:
 5. Criar páginas personalizadas para todos os filmes.
 
 6. Adicionar uma seção de comentários nas páginas dos filmes usando "disqus.com".
+
+
+## Visão Geral da Aplicação
+![Untitled ‑ Made with FlexClip (1)](https://github.com/SuperDeMou/MovieCatalog/assets/136927780/4df0ddaf-be0e-4cad-add7-9d65abc290a1)
